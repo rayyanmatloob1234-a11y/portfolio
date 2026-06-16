@@ -1214,6 +1214,94 @@
   .delay-4 { transition-delay: 0.4s; }
   .delay-5 { transition-delay: 0.5s; }
   .delay-6 { transition-delay: 0.6s; }
+
+  /* ══════════════════════════════════════
+     GLOBAL MOBILE OVERFLOW FIXES
+     Nothing should ever exceed 100vw width.
+  ══════════════════════════════════════ */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, svg, video, canvas { max-width: 100%; height: auto; }
+
+  @media (max-width: 768px) {
+    /* Tighter section padding so content has more breathing room */
+    section { padding: 70px 5vw; }
+
+    /* Hero text & actions wrap safely, never overflow */
+    h1 { word-break: break-word; }
+    .hero-sub { max-width: 100%; }
+    .hero-actions { flex-wrap: wrap; }
+    .btn-primary, .btn-ghost { flex: 1 1 auto; text-align: center; }
+
+    /* Hero stats wrap instead of forcing overflow */
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem 1.5rem;
+    }
+
+    /* About detail rows: stack on very narrow screens so long values
+       (e.g. "Mechatronics Engineering → Masters Abroad") don't get cut off */
+    .detail-row {
+      flex-wrap: wrap;
+    }
+    .detail-row .label {
+      width: auto;
+    }
+    .detail-row .val {
+      flex: 1 1 100%;
+    }
+
+    .about-interests { padding: 1.4rem; }
+
+    /* Project & cert cards: allow single-column comfortably, prevent
+       fixed-min-width grid tracks from forcing horizontal scroll */
+    .projects-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .skills-categories { grid-template-columns: 1fr; }
+
+    .project-card, .cert-card, .skill-category { padding: 1.2rem; }
+
+    /* Cert cards: let long names/ids wrap and shrink the logo a bit */
+    .cert-card { flex-wrap: nowrap; }
+    .cert-logo { width: 44px; height: 44px; }
+    .cert-name { font-size: 0.85rem; }
+    .cert-id { word-break: break-all; }
+
+    /* Contact channels & form fit within viewport */
+    .contact-channel { font-size: 0.82rem; padding: 0.7rem 0.9rem; }
+    .form-submit { width: 100%; text-align: center; }
+
+    /* Footer items wrap and don't get squeezed off-screen */
+    footer { padding: 1.5rem 5vw; }
+    .foot-socials { flex-wrap: wrap; }
+
+    /* Timeline keeps its dot/line inside the viewport */
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item { padding-left: 1.5rem; }
+    .timeline-dot { left: -1.5rem; }
+    .timeline-desc { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra-small phones: shrink the profile photo a little further
+       so the whole hero comfortably fits without spilling sideways */
+    .hero-photo-wrap {
+      width: clamp(130px, 48vw, 180px) !important;
+      height: clamp(130px, 48vw, 180px) !important;
+    }
+    .photo-ring-outer  { width: clamp(126px, 46vw, 174px) !important; height: clamp(126px, 46vw, 174px) !important; }
+    .photo-ring-inner  { width: clamp(116px, 43vw, 160px) !important; height: clamp(116px, 43vw, 160px) !important; }
+    .photo-orbit       { width: clamp(126px, 46vw, 174px) !important; height: clamp(126px, 46vw, 174px) !important; }
+    .photo-orbit-2     { width: clamp(116px, 43vw, 160px) !important; height: clamp(116px, 43vw, 160px) !important; }
+    .photo-gap         { width: clamp(106px, 40vw, 148px) !important; height: clamp(106px, 40vw, 148px) !important; }
+    .hero-photo-frame  { width: clamp(99px, 38vw, 138px) !important; height: clamp(99px, 38vw, 138px) !important; }
+
+    .hero-tag { font-size: 0.7rem; flex-wrap: wrap; }
+    .hero-stats { gap: 1rem 1.2rem; }
+    .stat-num { font-size: 1.5rem; }
+
+    .wip-progress-wrap { margin-left: 0; }
+    .wip-footer { flex-wrap: wrap; gap: 0.6rem; }
+  }
 </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -1708,7 +1796,7 @@
         <div class="cert-name">Introduction to HTML, CSS, &amp; JavaScript</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: VT274JFVCJFZ</div>
-        <a href="https://www.credly.com/badges/VT274JFVCJFZ" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/VT274JFVCJFZ" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1721,7 +1809,7 @@
         <div class="cert-name">Google AI Essentials</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: 1JVR7CLANHMG</div>
-        <a href="https://skillshop.exceedlms.com/student/award/1JVR7CLANHMG" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/1JVR7CLANHMG" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1734,7 +1822,7 @@
         <div class="cert-name">Building Generative AI-Powered Applications with Python</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: DKK0CXRK8VZH</div>
-        <a href="https://www.credly.com/badges/DKK0CXRK8VZH" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/DKK0CXRK8VZH" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1747,7 +1835,7 @@
         <div class="cert-name">Generative AI: Prompt Engineering Basics</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: 9T1NWG5A9UF0</div>
-        <a href="https://www.credly.com/badges/9T1NWG5A9UF0" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/9T1NWG5A9UF0" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1760,7 +1848,7 @@
         <div class="cert-name">Strengthen Your Business Savvy</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: 3AX7SG0GNE05</div>
-        <a href="https://www.credly.com/badges/3AX7SG0GNE05" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/3AX7SG0GNE05" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1773,7 +1861,7 @@
         <div class="cert-name">Generative AI: Elevate your Software Development Career</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: S8NTXZSICC25</div>
-        <a href="https://www.credly.com/badges/S8NTXZSICC25" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/S8NTXZSICC25" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1786,7 +1874,7 @@
         <div class="cert-name">Generative AI: Introduction and Applications</div>
         <div class="cert-date">Issued: May 2026</div>
         <div class="cert-id">ID: USUU8OPQK59K</div>
-        <a href="https://www.credly.com/badges/USUU8OPQK59K" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/USUU8OPQK59K" target="_blank" rel="noopener" class="cert-verify">↗ Verify Certificate</a>
       </div>
     </div>
 
@@ -1843,7 +1931,7 @@
 <!-- ╚══════════════════════════════╝ -->
 <footer>
   <div class="foot-left">
-    © 2026 <span>Rayyan Matloob</span>. Built with care in Karachi 🇵🇰
+    © 2026 <span>Rayyan Matloob</span>
   </div>
   <div class="foot-socials">
     <a href="https://github.com/rayyanmatloob1234-a11y" target="_blank" class="foot-social">
@@ -1972,21 +2060,35 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ── ACTIVE NAV LINK ───────────────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks  = document.querySelectorAll('.nav-links a');
-const mobileLinks = [];
-
 const mobileSubLinks = document.querySelectorAll('.mobile-subnav-inner a');
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const id = '#' + e.target.id;
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
-      mobileSubLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+function updateActiveNav() {
+  // offset accounts for fixed navbar height so the section feels "active"
+  // as soon as it reaches the top of the viewport (under the navbar)
+  const offset = 120;
+  let currentId = sections[0] ? sections[0].id : '';
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top - offset <= 0) {
+      currentId = section.id;
     }
   });
-}, { threshold: 0.4 });
 
-sections.forEach(s => navObserver.observe(s));
+  // if we're scrolled to (or near) the bottom of the page, force the last section active
+  const scrolledToBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
+  if (scrolledToBottom && sections.length) {
+    currentId = sections[sections.length - 1].id;
+  }
+
+  const activeHref = '#' + currentId;
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === activeHref));
+  mobileSubLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === activeHref));
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
 
 // ── CONTACT FORM (basic handler) ──────────────────────────────────
 // ── GMAIL CONTACT OPENER ─────────────────────────────────────────
